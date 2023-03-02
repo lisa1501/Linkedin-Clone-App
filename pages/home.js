@@ -5,12 +5,17 @@ import GroupIcon from "@mui/icons-material/Group";
 import OndemandVideoSharpIcon from "@mui/icons-material/OndemandVideoSharp";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import Head from "next/head";
 
 import HeaderLink from '../components/HeaderLink';
 
 const home = () => {
     return (
         <div className='space-y-10 relative'>
+            <Head>
+                <title>LinkedIn</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <header className="flex justify-around items-center py-4">
                 <div className="relative w-36 h-10">
                     <Image
@@ -34,7 +39,7 @@ const home = () => {
             </header>
 
             <main className='flex flex-col xl:flex-row items-center max-w-screen-lg mx-auto  '>
-                <div className='space-y-6 xl:space-y-10 '>
+                <div className='space-y-6 xl:space-y-10  left-px'>
                     <h1 className='text-5xl md:text-5*l text-amber-800/80 max-w-xl !leading-snug pl-4 xl:pl-0'>
                         Welcome to your professional community
                     </h1>
@@ -54,7 +59,7 @@ const home = () => {
                     </div>
                 </div>
                 <div className="relative xl:absolute w-100 h-100 xl:w-[900px] xl:h-[2000px] top-20 right-5">
-                    <img src="https://static-exp1.licdn.com/sc/h/dxf91zhqd2z6b0bwg85ktm5s4"  priority />
+                    <img src="https://static-exp1.licdn.com/sc/h/dxf91zhqd2z6b0bwg85ktm5s4"  priority="true" />
                 </div>
             </main>
         </div>
