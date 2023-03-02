@@ -2,7 +2,7 @@
 const nextConfig = {
     
     images: {
-        domains: ["lcontent.linkedin.com"],
+        domains: ["lcontent.linkedin.com","static-exp1.licdn.com"],
     },
 
 }

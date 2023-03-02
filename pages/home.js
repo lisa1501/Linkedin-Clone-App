@@ -10,11 +10,12 @@ import HeaderLink from '../components/HeaderLink';
 
 const home = () => {
     return (
-        <div>
+        <div className='space-y-10 relative'>
             <header className="flex justify-around items-center py-4">
                 <div className="relative w-36 h-10">
-                    <Image 
+                    <Image
                         src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg" 
+                
                         alt="logo" width={150} height={15} />
                 </div>
                 <div className="flex items-center sm:divide-x divide-gray-300">
@@ -32,9 +33,9 @@ const home = () => {
                 </div>
             </header>
 
-            <main className='flex flex-col xl:flex-row items-center max-w-screen-lg mx-auto'>
-                <div className='space-y-6 xl:space-y-10'>
-                    <h1 className='text-3xl md:text-5*l text-amber-800/80 max-w-xl !leading-snug pl-4 xl:pl-0'>
+            <main className='flex flex-col xl:flex-row items-center max-w-screen-lg mx-auto  '>
+                <div className='space-y-6 xl:space-y-10 '>
+                    <h1 className='text-5xl md:text-5*l text-amber-800/80 max-w-xl !leading-snug pl-4 xl:pl-0'>
                         Welcome to your professional community
                     </h1>
                     <div className='space-y-4'>
@@ -51,6 +52,9 @@ const home = () => {
                             <ArrowForwardIosRoundedIcon className="text-gray-700" />
                         </div>
                     </div>
+                </div>
+                <div className="relative xl:absolute w-100 h-100 xl:w-[900px] xl:h-[2000px] top-20 right-5">
+                    <img src="https://static-exp1.licdn.com/sc/h/dxf91zhqd2z6b0bwg85ktm5s4"  priority />
                 </div>
             </main>
         </div>
