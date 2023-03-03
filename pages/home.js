@@ -5,11 +5,16 @@ import GroupIcon from "@mui/icons-material/Group";
 import OndemandVideoSharpIcon from "@mui/icons-material/OndemandVideoSharp";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+
+
 import Head from "next/head";
 
 import HeaderLink from '../components/HeaderLink';
 
+
+
 const home = () => {
+    
     return (
         <div className='space-y-10 relative'>
             <Head>
@@ -20,7 +25,6 @@ const home = () => {
                 <div className="relative w-36 h-10">
                     <Image
                         src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg" 
-                
                         alt="logo" width={150} height={15} />
                 </div>
                 <div className="flex items-center sm:divide-x divide-gray-300">
@@ -30,6 +34,7 @@ const home = () => {
                         <HeaderLink Icon={OndemandVideoSharpIcon} text="Learning" />
                         <HeaderLink Icon={BusinessCenterIcon} text="Jobs" />
                     </div>
+                    
                     <div className='pl-4'>
                         <button  className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:border-2">
                             Sign in
@@ -66,4 +71,9 @@ const home = () => {
     )
 }
 
-export default home
+export default home;
+
+
+
+
+
