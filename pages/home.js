@@ -11,7 +11,15 @@ import Head from "next/head";
 
 import HeaderLink from '../components/HeaderLink';
 
-
+export async function getServerSideProps(context) {
+    const providers = await getProviders();
+    
+        return {
+        props: {
+            providers,
+        },
+        };
+    }
 
 const home = ({ providers }) => {
     
@@ -70,7 +78,7 @@ const home = ({ providers }) => {
                         </div>
                     </div>
                 </div>
-                <div className="relative xl:absolute w-100 h-100 xl:w-[900px] xl:h-[2000px] top-20 right-5">
+                <div className="relative xl:absolute w-100 h-100 xl:w-[700px] xl:h-[1500px] top-20 right-5">
                     <img src="https://static-exp1.licdn.com/sc/h/dxf91zhqd2z6b0bwg85ktm5s4"  priority="true" />
                 </div>
             </main>
@@ -80,15 +88,7 @@ const home = ({ providers }) => {
 
 export default home;
 
-export async function getServerSideProps(context) {
-    const providers = await getProviders();
-  
-    return {
-      props: {
-        providers,
-      },
-    };
-  }
+
 
 
 

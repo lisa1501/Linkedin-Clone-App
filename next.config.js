@@ -7,7 +7,14 @@ const nextConfig = {
 
     
     images: {
-        domains: ["lcontent.linkedin.com","static-exp1.licdn.com"],
+        
+        remotePatterns: [
+            {
+              protocol: "https",
+              hostname: "**",
+            },
+          ],
+        // domains: ["www.iconsdb.com","static-exp1.licdn.com","content.linkedin.com"],
     },
     
 
