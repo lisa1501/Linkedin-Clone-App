@@ -34,7 +34,7 @@ const Header = () => {
                 {mounted && (
                     <>
                         {resolvedTheme === "dark" ? (
-                        <img alt="logo" src="https://www.iconsdb.com/icons/preview/white/linkedin-3-xl.png" width="45" height="45" /> 
+                        <Image alt="logo" src="/linkedin.png" width="45" height="45" /> 
                         ) : (
                         <Image src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" 
                                 alt="logo" width={55} height={55} />
