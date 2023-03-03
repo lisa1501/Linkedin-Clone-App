@@ -36,7 +36,8 @@ const Header = () => {
                         {resolvedTheme === "dark" ? (
                         <img alt="logo" src="https://www.iconsdb.com/icons/preview/white/linkedin-3-xl.png" width="45" height="45" /> 
                         ) : (
-                        <Image src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width={55} height={55} />
+                        <Image src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" 
+                                alt="logo" width={55} height={55} />
                         )}
                     </>
                 )}
@@ -67,6 +68,9 @@ const Header = () => {
                         cursor-pointer flex-shrink-0 relative ${
                             resolvedTheme === "dark" ? "justify-end" : "justify-start"
                         }`}
+                        onClick={() =>
+                            setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                        }
                         
                     >
                         <span className="absolute left-0">🌜</span>
