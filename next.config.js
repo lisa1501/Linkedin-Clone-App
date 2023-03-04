@@ -4,16 +4,14 @@ const nextConfig = {
     experimental:{
         appDir:true
     },
-
-    
     images: {
         
         remotePatterns: [
             {
-              protocol: "https",
-              hostname: "**",
+                protocol: "https",
+                hostname: "**",
             },
-          ],
+            ],
         // domains: ["www.iconsdb.com","static-exp1.licdn.com","content.linkedin.com"],
     },
     
