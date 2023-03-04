@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { Avatar } from "@mui/material";
-import { signOut } from 'next-auth/react';
+import { signOut, useSession} from 'next-auth/react';
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const Sidebar = () => {
+    const { data: session } = useSession();
     return (
         <div className="space-y-2 min-w-max max-w-lg">
             {/* top */}
@@ -16,15 +17,15 @@ const Sidebar = () => {
                 </div>
                 <Avatar 
                     onClick={signOut}
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTOlN7qulppjwD_BeyT_J4me7qT__P3cy66A&usqp=CAU"
+                    src={session?.user?.image}
                     className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"/>
 
                 <div className="mt-3 py-4  space-x-0.5">
                     <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">
-                        hello world
+                    {session?.user?.name}
                     </h4>
                     <p className="text-black/60 dark:text-white/75 text-sm">
-                        helloworld@gmai.com
+                    {session?.user?.email}
                     </p>
                 </div>
 
@@ -65,6 +66,7 @@ const Sidebar = () => {
                     <p className="sidebarLink">Events</p>
                     <AddRoundedIcon className="!h-5" />
                 </div>
+
                 <p className="sidebarLink">Followed Hashtags</p>
                 <div className="sidebarButton text-center">
                     <h4 className="dark:text-white font-medium text-sm">Discover More</h4>
