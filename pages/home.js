@@ -33,7 +33,7 @@ const home = ({ providers }) => {
                 <div className="relative w-36 h-10">
                     <Image
                         src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg" 
-                        alt="logo" width={150} height={15} />
+                        alt="logo" fill="true" />
                 </div>
                 <div className="flex items-center sm:divide-x divide-gray-300">
                     <div className="hidden sm:flex space-x-8 pr-4">
@@ -79,7 +79,7 @@ const home = ({ providers }) => {
                     </div>
                 </div>
                 <div className="relative xl:absolute w-100 h-100 xl:w-[700px] xl:h-[1500px] top-20 right-5">
-                    <img src="https://static-exp1.licdn.com/sc/h/dxf91zhqd2z6b0bwg85ktm5s4"  priority="true" />
+                    <img src="https://static-exp1.licdn.com/sc/h/dxf91zhqd2z6b0bwg85ktm5s4"  fill="true" priority="true" />
                 </div>
             </main>
         </div>
