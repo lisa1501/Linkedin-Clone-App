@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function Form() {
     const [input, setInput] = useState("");
+    const [photoUrl, setPhotoUrl] = useState("");
     console.log(input)
     return (
         <form>
@@ -12,6 +13,14 @@ function Form() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
             />
+            <input
+                type="text"
+                placeholder="Add a photo URL (optional)"
+                className="bg-transparent focus:outline-none truncate max-w-xs md:max-w-sm dark:placeholder-white/75"
+                value={photoUrl}
+                onChange={(e) => setPhotoUrl(e.target.value)}
+            />
+
         </form>
     )
 }
