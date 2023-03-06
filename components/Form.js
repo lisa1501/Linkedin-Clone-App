@@ -20,6 +20,13 @@ function Form() {
                 value={photoUrl}
                 onChange={(e) => setPhotoUrl(e.target.value)}
             />
+            <button
+                className="absolute bottom-0 right-0 font-medium bg-blue-400 hover:bg-blue-500 disabled:text-black/40 disabled:bg-white/75 disabled:cursor-not-allowed text-white rounded-full px-3.5 py-1"
+                type="submit"
+                disabled={!input.trim() && !photoUrl.trim()}
+            >
+                Post
+            </button>
 
         </form>
     )
