@@ -13,16 +13,19 @@ import HeaderLink from '../components/HeaderLink';
 
 export async function getServerSideProps(context) {
     const providers = await getProviders();
-    
+        
         return {
         props: {
             providers,
+    
         },
         };
+    
     }
 
+
 const home = ({ providers }) => {
-    
+
     return (
         <div className='space-y-10 relative'>
             <Head>
@@ -44,6 +47,7 @@ const home = ({ providers }) => {
                     </div>
                     
                     {Object.values(providers).map((provider) => (
+                        
                         <div key={provider.name}>
                             <div className="pl-4">
                                 <button

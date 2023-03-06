@@ -5,6 +5,7 @@ import GroupIcon from "@mui/icons-material/Group";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import OndemandVideoSharpIcon from "@mui/icons-material/OndemandVideoSharp";
 import { Avatar } from "@mui/material";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import { useState, useEffect} from "react";
@@ -61,6 +62,7 @@ const Header = () => {
                 <HeaderLink Icon={NotificationsIcon} text="Notifications" feed active/>
                 <HeaderLink Icon={Avatar} text="Me" feed avatar hidden />
                 <HeaderLink Icon={AppsOutlinedIcon} text="Work" feed hidden />
+                <HeaderLink Icon={OndemandVideoSharpIcon} text="Learning" feed hidden/>
                 
                 {mounted && (
                     <div
@@ -71,7 +73,6 @@ const Header = () => {
                         onClick={() =>
                             setTheme(resolvedTheme === "dark" ? "light" : "dark")
                         }
-                        
                     >
                         <span className="absolute left-0">🌜</span>
                     
