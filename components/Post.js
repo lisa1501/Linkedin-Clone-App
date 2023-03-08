@@ -1,13 +1,18 @@
 import { Avatar, IconButton } from '@mui/material';
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtom";
+import { modalState, modalTypeState } from "../atoms/modalAtom";
 import { useState } from "react";
+import {  getPostState } from "../atoms/postAtom";
 
 
 function Post({ post, modalPost }) {
+
     const [modalOpen, setModalOpen] = useRecoilState(modalState);
     const [showInput, setShowInput] = useState(false);
+    const [modalType, setModalType] = useRecoilState(modalTypeState);
+    const [postState, setPostState] = useRecoilState(getPostState);
 
     const truncate = (string, n) =>
         string?.length > n ? string.substr(0, n - 1) + "...see more" : string;
@@ -41,12 +46,24 @@ function Post({ post, modalPost }) {
                         <p onClick={() => setShowInput(false)}>{post.input}</p>
                     ) : (
                         <p onClick={() => setShowInput(true)}>
-                        {truncate(post.input, 200)}
+                            {truncate(post.input, 10)}
                         </p>
                     )}
                 </div>
             )}
 
+            {post.photoUrl && !modalPost && (
+                    <img
+                        src={post.photoUrl}
+                        alt=""
+                        className="w-full cursor-pointer"
+                        onClick={() => {
+                            setModalOpen(true);
+                            setModalType("gifYouUp");
+                            setPostState(post);
+                        }}
+                    />
+                )}
         </div>
     )
 }
