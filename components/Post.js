@@ -1,7 +1,12 @@
-import { Avatar } from '@mui/material';
+import { Avatar, IconButton } from '@mui/material';
+import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtom";
 
 
 function Post({ post, modalPost }) {
+    const [modalOpen, setModalOpen] = useRecoilState(modalState);
+
     return (
         <div className={`bg-white dark:bg-[#1D2226] ${
             modalPost ? "rounded-r-lg" : "rounded-lg"
@@ -13,8 +18,16 @@ function Post({ post, modalPost }) {
                         {post.username}
                     </h6>
                     <p className="text-sm dark:text-white/75 opacity-80">{post.email}</p>
-                    
                 </div>
+                    {modalPost ? (
+                        <IconButton onClick={() => setModalOpen(false)}>
+                            <CloseRoundedIcon className="dark:text-white/75 h-7 w-7" />
+                        </IconButton>
+                        ) : (
+                        <IconButton>
+                            <MoreHorizRoundedIcon className="dark:text-white/75 h-7 w-7" />
+                        </IconButton>
+                        )}
             </div>
         </div>
     )
