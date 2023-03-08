@@ -2,8 +2,9 @@ import Input from "./Input";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { handlePostState, useSSRPostsState } from "../atoms/postAtom";
+import Post from "./Post";
 
-function Feed() {
+function Feed({ posts }) {
     const [realtimePosts, setRealtimePosts] = useState([]);
     const [handlePost, setHandlePost] = useRecoilState(handlePostState);
     const [useSSRPosts, setUseSSRPosts] = useRecoilState(useSSRPostsState);
@@ -28,15 +29,12 @@ function Feed() {
         <div className="space-y-6 pb-24 max-w-lg">
             <Input />
             {/* posts */}
-            {realtimePosts.map((post)=>(
-                <>  
-                    <div>{post.input}</div>
-                    <img src={post.photoUrl} alt="" />
-                    
-                </>
-            ))}
+            {!useSSRPosts 
+                ? realtimePosts.map((post)=> <Post key={post._id} post={post} />)
+                : posts.map((post)=> <Post key={post._id} post={post} /> )}
+                {/* {posts.map((post)=><Post key={post._Id} post={post} />)} */}
         </div>
-    )
+    );
 }
 
 export default Feed

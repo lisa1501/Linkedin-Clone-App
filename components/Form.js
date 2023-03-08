@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
+import { handlePostState } from "../atoms/postAtom";
 
 function Form() {
     const [input, setInput] = useState("");
@@ -9,6 +10,7 @@ function Form() {
     console.log(input)
     const { data: session } = useSession();
     const [modalOpen, setModalOpen] = useRecoilState(modalState);
+    const [handlePost, setHandlePost] = useRecoilState(handlePostState);
     const uploadPost = async (e) => {
         e.preventDefault();
 
@@ -31,7 +33,7 @@ function Form() {
             
             console.log(responseData);
         
-            // setHandlePost(true)
+            setHandlePost(true)
             setModalOpen(false);
         };
 
