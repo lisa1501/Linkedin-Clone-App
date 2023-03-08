@@ -28,7 +28,13 @@ function Feed() {
         <div className="space-y-6 pb-24 max-w-lg">
             <Input />
             {/* posts */}
-            
+            {realtimePosts.map((post)=>(
+                <>  
+                    <div>{post.input}</div>
+                    <img src={post.photoUrl} alt="" />
+                    
+                </>
+            ))}
         </div>
     )
 }

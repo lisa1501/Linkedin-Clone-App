@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import Sidebar from '../components/Sidebar'
 import Feed from '../components/Feed';
 import Modal from "../components/Modal";
+import { connectToDatabase } from '../util/mongodb';
 
 export async function getServerSideProps(context) {
     // Check if the user is authenticated on the server...
@@ -22,13 +23,31 @@ export async function getServerSideProps(context) {
             },
         };
         }
-        return {
-        props: {
-        session,}
-}  
-}
 
-export default function Home() {
+        // get posts on SSR
+        const { db } = await connectToDatabase();
+        const posts = await db.collection("posts")
+                                .find()
+                                .sort({timestamp:-1})
+                                .toArray();
+        return {
+            props: {
+                session,
+                posts: posts.map((post) => ({
+                    _id: post._id.toString(),
+                    input: post.input,
+                    photoUrl: post.photoUrl,
+                    username: post.username,
+                    email: post.email,
+                    userImg: post.userImg,
+                    createdAt: post.createdAt,
+                })),
+            }
+        }  
+    }
+
+export default function Home({ posts }) {
+    console.log(posts);
     const [modalOpen, setModalOpen] = useRecoilState(modalState);
     const [modalType, setModalType] = useRecoilState(modalTypeState);
     const router = useRouter();
