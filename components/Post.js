@@ -10,7 +10,7 @@ import ThumbUpOffAltOutlinedIcon from "@mui/icons-material/ThumbUpOffAltOutlined
 import ThumbUpOffAltRoundedIcon from "@mui/icons-material/ThumbUpOffAltRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
-import {  getPostState } from "../atoms/postAtom";
+import { handlePostState, getPostState } from "../atoms/postAtom";
 import TimeAgo from "timeago-react";
 
 
@@ -21,14 +21,23 @@ function Post({ post, modalPost }) {
     const [modalType, setModalType] = useRecoilState(modalTypeState);
     const [postState, setPostState] = useRecoilState(getPostState);
     const [liked, setLiked] = useState(false);
+    const [handlePost, setHandlePost] = useRecoilState(handlePostState);
     
     const truncate = (string, n) =>
         string?.length > n ? string.substr(0, n - 1) + "  ...see more".toUpperCase() : string;
 
     const deletePost = async () => {
+        const response = await fetch(`/api/posts/${post._id}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+        });
+    
+            setHandlePost(true);
+            setModalOpen(false);
         
     };
-        
+
+    // console.log(post.createdAt)
     return (
         <div className={`bg-white dark:bg-[#1D2226] ${
             modalPost ? "rounded-r-lg" : "rounded-lg"
