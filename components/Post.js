@@ -11,6 +11,7 @@ import ThumbUpOffAltRoundedIcon from "@mui/icons-material/ThumbUpOffAltRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
 import {  getPostState } from "../atoms/postAtom";
+import TimeAgo from "timeago-react";
 
 
 function Post({ post, modalPost }) {
@@ -20,7 +21,7 @@ function Post({ post, modalPost }) {
     const [modalType, setModalType] = useRecoilState(modalTypeState);
     const [postState, setPostState] = useRecoilState(getPostState);
     const [liked, setLiked] = useState(false);
-    console.log(post.userImg)
+    
     const truncate = (string, n) =>
         string?.length > n ? string.substr(0, n - 1) + "  ...see more".toUpperCase() : string;
 
@@ -39,6 +40,10 @@ function Post({ post, modalPost }) {
                         {post.username}
                     </h6>
                     <p className="text-sm dark:text-white/75 opacity-80">{post.email}</p>
+                    <TimeAgo
+                        datetime={post.createdAt}
+                        className="text-xs dark:text-white/75 opacity-80"
+                    />
                 </div>
                 {modalPost ? (
                     <IconButton onClick={() => setModalOpen(false)}>
