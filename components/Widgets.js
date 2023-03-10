@@ -31,6 +31,14 @@ function Widgets({articles}) {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            <div className="bg-white dark:bg-[#1D2226] w-11/12 h-64 px-2.5 rounded-lg sticky top-20 border border-gray-300 dark:border-none">
+                <div className="relative w-full h-full">
+                    <Image
+                    alt="logo" src="/ads.png" fill="true" priority="true"
+                />
+                </div>
             </div>    
         </div>
     )
