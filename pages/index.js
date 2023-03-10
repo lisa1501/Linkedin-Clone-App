@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import Sidebar from '../components/Sidebar'
 import Feed from '../components/Feed';
 import Modal from "../components/Modal";
+import Widgets from '../components/Widgets';
 import { connectToDatabase } from '../util/mongodb';
 
 export async function getServerSideProps(context) {
@@ -30,9 +31,16 @@ export async function getServerSideProps(context) {
                                 .find()
                                 .sort({timestamp:-1})
                                 .toArray();
+
+        // Get Google News API
+        const results = await fetch(
+            `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`
+        ).then((res) => res.json()); 
+
         return {
             props: {
                 session,
+                articles: results.articles,
                 posts: posts.map((post) => ({
                     _id: post._id.toString(),
                     input: post.input,
@@ -46,8 +54,8 @@ export async function getServerSideProps(context) {
         }  
     }
 
-export default function Home({ posts }) {
-    console.log(posts);
+export default function Home({ posts, articles }) {
+    console.log(articles);
     const [modalOpen, setModalOpen] = useRecoilState(modalState);
     const [modalType, setModalType] = useRecoilState(modalTypeState);
     const router = useRouter();
@@ -62,6 +70,7 @@ export default function Home({ posts }) {
         return "Loading or not authenticated..."
     }
     
+    
     return (
         <div className='bg-[#F3F2EF]  dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6'>
             <Head>
@@ -75,7 +84,7 @@ export default function Home({ posts }) {
                     <Sidebar />
                     <Feed posts={posts}/>
                 </div>
-            
+                <Widgets articles={articles}/>
                 <AnimatePresence>
                     {modalOpen && (
                         <Modal handleClose={() => setModalOpen(false)} type={modalType} />
